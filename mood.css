@@ -1,0 +1,141 @@
+/* Mood Food Page Styles */
+.mood-selector {
+    margin: 2rem 0;
+}
+
+.mood-btn {
+    background: white;
+    border: none;
+    border-radius: 12px;
+    padding: 1.5rem 0.5rem;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.mood-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.mood-btn.active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mood-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.mood-btn[data-mood="happy"] .mood-icon {
+    color: #FFD700;
+}
+
+.mood-btn[data-mood="sad"] .mood-icon {
+    color: #1E90FF;
+}
+
+.mood-btn[data-mood="stressed"] .mood-icon {
+    color: #FF6347;
+}
+
+.mood-btn[data-mood="tired"] .mood-icon {
+    color: #A9A9A9;
+}
+
+.mood-btn[data-mood="angry"] .mood-icon {
+    color: #DC143C;
+}
+
+.mood-btn[data-mood="anxious"] .mood-icon {
+    color: #9370DB;
+}
+
+.mood-btn[data-mood="focused"] .mood-icon {
+    color: #32CD32;
+}
+
+.mood-btn[data-mood="relaxed"] .mood-icon {
+    color: #20B2AA;
+}
+
+/* Food Recommendations */
+.food-card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.food-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.food-img {
+    height: 150px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.food-body {
+    padding: 1.25rem;
+}
+
+.food-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.food-desc {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.food-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+}
+
+.benefits-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 1rem;
+}
+
+.benefits-list li {
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.benefits-list li::before {
+    content: "•";
+    color: var(--primary);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+/* Floating Mood Button */
+.mood-fab {
+    right: auto;
+    left: 2rem;
+    background: linear-gradient(135deg, #7209b7, #4361ee);
+}
+
+.mood-fab:hover {
+    background: linear-gradient(135deg, #5a0890, #3a4fd3);
+}

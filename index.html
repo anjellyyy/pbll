@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | NutriTrack</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="styles.css" rel="stylesheet" />
+    <link href="progress.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="loading-screen" id="loader">
+      <div class="spinner-border"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="fas fa-utensils me-2"></i>NutriTrack
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">
+                <i class="fas fa-chart-pie me-1"></i> Dashboard
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="mood.html">
+                <i class="fas fa-smile me-1"></i> Mood Food
+              </a>
+            </li>
+          </ul>
+          <div class="navbar-nav ms-auto align-items-center">
+            <span class="nav-item nav-link" id="userEmail"></span>
+            <div class="dropdown">
+              <button
+                class="btn btn-outline-light dropdown-toggle"
+                type="button"
+                id="userDropdown"
+                data-bs-toggle="dropdown"
+              >
+                <i class="fas fa-user-circle me-1"></i>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fas fa-user me-2"></i>Profile</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fas fa-cog me-2"></i>Settings</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <button class="dropdown-item" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt me-2"></i>Logout
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+      <div class="row g-4">
+        <!-- Progress Section -->
+        <div class="col-lg-6">
+          <div class="card">
+            <div
+              class="card-header d-flex justify-content-between align-items-center"
+            >
+              <h4 class="mb-0">Daily Progress</h4>
+              <span class="badge bg-primary">Today</span>
+            </div>
+            <div class="card-body text-center">
+              <div class="progress-section">
+                <div class="progress-container">
+                  <div
+                    class="progress-circle"
+                    id="calorieProgress"
+                    style="--progress: 0%"
+                  >
+                    <div class="progress-text" id="progressText">0/2000</div>
+                  </div>
+                </div>
+                <div class="progress-info">
+                  <span id="remainingCalories">2000</span> calories remaining
+                </div>
+              </div>
+
+              <div class="nutrient-progress">
+                <h5 class="text-start mb-3">Macronutrients</h5>
+                <div class="d-flex align-items-center mb-3">
+                  <div class="me-3" style="width: 100px">
+                    <span class="text-muted">Protein</span>
+                  </div>
+                  <div class="progress flex-grow-1">
+                    <div
+                      class="progress-bar"
+                      id="proteinProgress"
+                      role="progressbar"
+                    >
+                      0g
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center mb-3">
+                  <div class="me-3" style="width: 100px">
+                    <span class="text-muted">Carbs</span>
+                  </div>
+                  <div class="progress flex-grow-1">
+                    <div
+                      class="progress-bar"
+                      id="carbsProgress"
+                      role="progressbar"
+                    >
+                      0g
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center">
+                  <div class="me-3" style="width: 100px">
+                    <span class="text-muted">Fat</span>
+                  </div>
+                  <div class="progress flex-grow-1">
+                    <div
+                      class="progress-bar"
+                      id="fatProgress"
+                      role="progressbar"
+                    >
+                      0g
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Food Tracking Section -->
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="mb-0">Food Tracker</h4>
+            </div>
+            <div class="card-body">
+              <form id="foodForm" class="mb-4">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search for food..."
+                    id="foodSearch"
+                  />
+                  <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </form>
+
+              <div class="food-results mb-4" id="foodResults"></div>
+
+              <h5
+                class="d-flex justify-content-between align-items-center mb-3"
+              >
+                <span>Today's Log</span>
+                <span class="badge bg-primary" id="totalCalories">0 cal</span>
+              </h5>
+              <div class="today-log">
+                <ul class="list-group" id="foodLog"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Action Buttons -->
+    <a href="mood.html" class="fab mood-fab">
+      <i class="fas fa-smile"></i>
+    </a>
+    <button class="fab" id="quickAddBtn">
+      <i class="fas fa-plus"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="auth.js"></script>
+    <script src="progress.js"></script>
+    <script>
+      // Verify login on dashboard load
+      document.addEventListener("DOMContentLoaded", function () {
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        if (!currentUser) {
+          window.location.href = "login.html";
+        } else {
+          document.getElementById("userEmail").textContent = currentUser.email;
+          document.getElementById("loader").style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
